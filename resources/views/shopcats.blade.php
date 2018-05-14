@@ -13,6 +13,12 @@
 
         <App-Header></App-Header>
 
+        <div class="container">
+
+            <router-view></router-view>
+
+        </div>
+
         <App-Footer></App-Footer>
 
     </div>
