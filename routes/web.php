@@ -3,11 +3,13 @@
 
 
 Route::get('/', function () {
-    return view('shopcats');
+    return view('welcome');
 });
 
-Route::get('/{name}', function () {
+Route::get('/shopcats/{name}', function () {
 
     return redirect('/');
 
 })->where ('name', '[a-zA-Z]+');
+
+Route::resource('shopcats', 'PhonebookController');

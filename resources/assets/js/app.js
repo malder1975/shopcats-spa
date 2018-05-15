@@ -13,6 +13,8 @@ let AppFooter = require('./components/AppFooter.vue');
 
 let Home = require('./components/Home.vue');
 let About = require('./components/About.vue');
+
+
 //Vue.component('example', require('./components/Example.vue'));
 
 const routes = [
