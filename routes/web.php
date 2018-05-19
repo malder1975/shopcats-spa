@@ -13,3 +13,5 @@ Route::get('/shopcats/{name}', function () {
 })->where ('name', '[a-zA-Z]+');
 
 Route::resource('shopcats', 'PhonebookController');
+
+Route::post('getData', 'PhonebookController@getData');

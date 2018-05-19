@@ -3,7 +3,7 @@
         <div class="modal-background"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Добавление телефона</p>
+                <p class="modal-card-title">{{ list.name }} редактирование</p>
                 <button class="delete" aria-label="close" @click='close'></button>
             </header>
             <section class="modal-card-body">
@@ -37,7 +37,7 @@
 
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success"@click='save'>Сохранить</button>
+                <button class="button is-success"@click='update'>Сохранить</button>
                 <button class="button" @click='close'>Отмена</button>
             </footer>
         </div>
@@ -46,16 +46,12 @@
 
 <script>
     export default {
-        name: "add",
+        name: "update",
         props: ['openmodal'],
 
         data() {
             return{
-                list:{
-                   name:'',
-                   phone:'',
-                   email:''
-                },
+                list:{},
 
                 errors:[]
             }
@@ -66,13 +62,9 @@
                 this.$emit('closeRequest')
             },
 
-            save() {
+            update() {
 
-                axios.post('/shopcats', this.$data.list).then((response) => {
-
-                    this.close();
-                    this.$parent.lists.push(response.data)
-                })
+                axios.patch(`/shopcats/${this.list.id}`, this.$data.list).then((response) => this.close())
 
                     .catch((error) => this.errors = error.response.data)
 
